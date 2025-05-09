@@ -1,0 +1,134 @@
+.filter-side-wrapper {
+    width: 295px;
+    height: 1315px;
+    border: 1px solid #00000010;
+    padding: 20px 24px;
+    border-radius: 20px;
+
+    .filter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .info{
+        color: #00000099;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    .hr-line {
+        width: 100%;
+        height: 1px;
+        margin-bottom: 24px;
+        background-color: #00000010;
+    }
+
+    .filter-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .accordion {
+        margin-bottom: 24px;
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            p {
+                margin-top: 0;
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 100%;
+            }
+        }
+    }
+
+    .arrow {
+        transform: rotate(0);
+        transition: .3s;
+    }
+
+    .arrow-top {
+        transform: rotate(-90deg);
+    }
+
+    .arrow-bottom {
+        transform: rotate(90deg);
+    }
+
+    .accordion-body {
+        height: 70px;
+        transition: .3s;
+        overflow: hidden;
+    }
+
+    .color-accordion {
+        height: 100px;
+    }
+
+    .accordion-body.hide {
+        height: 0;
+    }
+
+    .hola * {
+        background-color: #000 !important;
+    }
+
+    .hola {
+        margin-top: 20px;
+    }
+
+    .size-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 12px;
+    }
+    
+    .size-btn {
+        padding: 18px 24px;
+        border-radius: 999px;
+        background-color: #F0F0F0;
+        font-size: 16px;
+        color: #00000099;
+        border: none;
+        font-weight: 200;
+        line-height: 100%;
+        letter-spacing: 0;
+        cursor: pointer;
+        transition: .2s;
+    }
+    
+    .size-btn.active {
+        background-color: #000;
+        color: #fff;
+    }
+    
+    .apply-filter-btn {
+        width: 100%;
+        padding: 15px ;
+        background-color: #000;
+        font-size: 14px;
+        font-weight: 500;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+    }
+
+    .bottom {
+        height: 325px;
+    }
+
+    .dress-info {
+        color: #00000099;
+        font-weight: 400;
+        font-size: 16px;
+    }
+ 
+}

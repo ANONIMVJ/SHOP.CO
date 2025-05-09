@@ -1,0 +1,122 @@
+.dress-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    height: 920px;
+    border-radius: 62px;
+    background-color: #F0F0F0;
+  
+    h3 {
+        font-family: 'Poppins';
+      margin-top: 70px;
+      font-size: 48px;
+      font-weight: 1000;
+    }
+  
+    .img-wrapper {
+      margin-top: 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  
+      .img-row {
+        display: flex;
+        gap: 20px;
+      }
+    }
+}
+.coments {
+    padding: 40px;
+  
+    .customers {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      h3 {
+        font-family: 'Poppins';
+        font-size: 48px;
+        font-weight: 1000;
+      }
+  
+      .icons {
+        display: flex;
+        gap: 10px;
+  
+        button {
+          background: transparent;
+          border: none;
+          font-size: 30px;
+          cursor: pointer;
+  
+          &:hover {
+            color: teal;
+          }
+        }
+      }
+    }
+  
+    .coment-slider {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 20px 0;
+        scroll-behavior: smooth;
+      
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      
+        .coment-card {
+          min-width: 300px;
+          max-width: 300px;
+          transition: all 0.3s ease;
+          background: white;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          border-radius: 20px;
+          padding: 30px;
+          flex-shrink: 0;
+      
+          .stars {
+            display: flex;
+            gap: 5px;
+      
+            .star-icon {
+              color: gold;
+              font-size: 20px;
+            }
+          }
+      
+          .name {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 18px;
+      
+            .verified {
+              color: green;
+              font-size: 16px;
+            }
+          }
+      
+          .text {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+          }
+      
+          &.blurred {
+            filter: blur(2px);
+            opacity: 0.4;
+            transform: scale(0.95);
+          }
+      
+          &.active {
+            filter: none;
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+    }      
