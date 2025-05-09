@@ -70,12 +70,12 @@ function ByDress() {
         <h3>BROWSE BY DRESS STYLE</h3>
         <div className='img-wrapper'>
           <div className='img-row'>
-            <img style={{width: "408px", height: "289px"}} src="/public/img/bd1_item.png" alt="bd1" />
-            <img style={{width: "684px", height: "289px"}} src="/public/img/bd2_item.png" alt="bd2" />
+            <img style={{width: "408px", height: "289px"}} src="/img/bd1_item.png" alt="bd1" />
+            <img style={{width: "684px", height: "289px"}} src="/img/bd2_item.png" alt="bd2" />
           </div>
           <div className='img-row'>
-            <img style={{width: "684px", height: "289px"}} src="/public/img/bd3_item.png" alt="bd3" />
-            <img style={{width: "408px", height: "289px"}} src="/public/img/bd4_item.png" alt="bd4" />
+            <img style={{width: "684px", height: "289px"}} src="/img/bd3_item.png" alt="bd3" />
+            <img style={{width: "408px", height: "289px"}} src="/img/bd4_item.png" alt="bd4" />
           </div>
         </div>
       </div>
