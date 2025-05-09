@@ -20,6 +20,7 @@
     .card {
         display: flex;
         flex-direction: column;
+        gap: 8px;
 
         p {
             font-weight: 700;
@@ -41,12 +42,13 @@
             }
 
             .disc {
+                width: 58px;
+                height: 28px;
+                left: 110px;
                 position: absolute;
                 text-align: center;
                 line-height: 28px;
                 font-weight: 500;
-                width: 58px;
-                height: 28px;
                 margin-left: 14px;
                 background-color: #FF33331A;
                 border-radius: 62px;
@@ -62,7 +64,7 @@
             margin-top: -20px;
 
             .star-icon {
-                color: yellow;
+                color:  #FFC633;
             }
 
             p {

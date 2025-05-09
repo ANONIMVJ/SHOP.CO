@@ -10,7 +10,7 @@ function NewArrivals() {
         </div>
         <div className='item-cards'>
             <div className='card'>
-              <img src="/src/assets/na1_item.png" alt="The item one png" />
+              <img src="/public/img/na1_item.png" alt="The item one png" />
               <p>T-SHIRT WITH TAPE DETAILS</p>
               <div className='stars'>
                 <BiSolidStar className='star-icon'/>
@@ -23,7 +23,7 @@ function NewArrivals() {
               <p className='price'>$120</p>
             </div>
             <div className='card'>
-              <img src="/src/assets/na2_item.png" alt="The item two png" />
+              <img src="/public/img/na2_item.png" alt="The item two png" />
               <p>SKINNY FIT JEANS</p>
               <div className='stars'>
                 <BiSolidStar className='star-icon'/>
@@ -36,7 +36,7 @@ function NewArrivals() {
               <p className='price'>$240 <span>$260</span> <span className='disc'>-20%</span></p>
             </div>
             <div className='card'>
-              <img style={{width: "295px"}} src="/src/assets/na3_item.png" alt="The item two png" />
+              <img style={{width: "295px"}} src="/public/img/na3_item.png" alt="The item two png" />
               <p>CHECKERED SHIRT</p>
               <div className='stars'>
                 <BiSolidStar className='star-icon'/>
@@ -49,7 +49,7 @@ function NewArrivals() {
               <p className='price'>$180</p>
             </div>
             <div className='card'>
-              <img style={{width: "295px"}} src="/src/assets/na4_item.png" alt="The item two png" />
+              <img style={{width: "295px"}} src="/public/img/na4_item.png" alt="The item two png" />
               <p>SLEEVE STRIPED T-SHIRT</p>
               <div className='stars'>
                 <BiSolidStar className='star-icon'/>
