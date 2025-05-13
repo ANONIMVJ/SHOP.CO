@@ -1,10 +1,10 @@
-import React from "react";
-import { ProductCard } from "../../components";
 import { useProducts } from "../../hooks/useProducts";
-import "./NewProducts.scss";
-import { Breadcrumb } from "../../components";
 import { Link } from "react-router-dom";
+import { ProductCard } from "../../components";
+import { Breadcrumb } from "../../components";
 import FilterSidebar from "../Category/CategoryDetails/FIlterSidebar";
+
+import "./NewProducts.scss";
 
 function NewProducts() {
   const { data: products, isLoading } = useProducts();

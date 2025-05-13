@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { ProductCard } from "../../../components";
 import { useProducts } from "../../../hooks/useProducts";
+import { ProductCard } from "../../../components";
 import { parseQueryParams } from "../../../utils";
+
 import "./CategoryProducts.scss";
 
 function CategoryProducts() {

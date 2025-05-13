@@ -45,7 +45,7 @@ function CartPage() {
       <h1>YOUR CART</h1>
       {cartItemsList.items.length === 0 ? (
         <div className="empty-cart">
-          <img src="/empty-cart.svg" alt="Empty cart" className="empty-image" />
+          <img src="/src/assets/emptyCart.png" alt="Empty cart" className="empty-image" />
           <h2>Your cart is empty</h2>
           <p>Looks like you haven’t added anything to your cart yet.</p>
         </div>

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import ReactRangeSliderInput from "react-range-slider-input";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 
+import ReactRangeSliderInput from "react-range-slider-input";
+import { parseQueryParams } from "../../../../utils";
+import ColorPicker from "./ColorPicker";
 import { ArrowRightIcon, FilterIcon } from "../../../../assets/icons";
 
 import "react-range-slider-input/dist/style.css";
 import "./FilterSide.scss";
-import ColorPicker from "./ColorPicker";
-import { useLocation, useNavigate } from "react-router";
-import { parseQueryParams } from "../../../../utils";
 
 const FilterSidebar = () => {
   const navigate = useNavigate();

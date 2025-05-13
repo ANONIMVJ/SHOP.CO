@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useProductById } from "../../hooks";
+import { useDispatch } from "react-redux";
 import { useProducts } from "../../hooks/useProducts";
 import { useState, useEffect } from "react";
 import {
@@ -7,11 +8,12 @@ import {
   StarRating,
   ProductCard,
   ReviewCard,
+
 } from "../../components";
-import "./ProductDetails.scss";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
 import { addToCart } from "../../reducer/cart";
+import { toast } from "react-toastify";
+
+import "./ProductDetails.scss";
 
 function ProductDetails() {
   const [product, setProduct] = useState(null);

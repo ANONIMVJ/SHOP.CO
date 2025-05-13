@@ -1,7 +1,6 @@
-import React from "react";
 import VectorImg from "../../../../assets/Vector.svg";
-import BrandsAd from "../BrandsAdSection";
 import { Button } from "../../../../components";
+import BrandsAd from "../BrandsAdSection";
 
 import "./Home.scss";
 

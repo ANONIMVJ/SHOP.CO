@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import "./NewArrivals.scss";
 import { useProducts } from "../../../../hooks/useProducts";
 import { ProductCard } from "../../../../components";
 import { Link } from "react-router-dom";
+
+import "./NewArrivals.scss";
 
 function NewArrivals() {
   const [products, setProducts] = useState([]);

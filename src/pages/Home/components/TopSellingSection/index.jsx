@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import "./TopSelling.scss";
+import { useState, useEffect } from "react";
 import { useProducts } from "../../../../hooks/useProducts";
 import { ProductCard } from "../../../../components";
 import { Link } from "react-router";
+
+import "./TopSelling.scss";
 
 function TopSelling() {
   const [products, setProducts] = useState([]);

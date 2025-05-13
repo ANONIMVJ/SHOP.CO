@@ -1,9 +1,9 @@
-import React from "react";
 import { ProductCard } from "../../components";
 import { useProducts } from "../../hooks/useProducts";
-import "./Products.scss";
 import { Breadcrumb } from "../../components";
 import { Link } from "react-router-dom";
+
+import "./Products.scss";
 
 function Products() {
   const { data: products, isLoading } = useProducts();

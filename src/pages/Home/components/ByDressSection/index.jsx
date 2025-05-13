@@ -1,10 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
-import "./ByDress.scss";
+import { useRef, useState, useEffect } from "react";
+import { useCategories } from "../../../../hooks";
+import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { BiSolidStar } from "react-icons/bi";
 import { FcApproval } from "react-icons/fc";
-import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import { useCategories } from "../../../../hooks";
 import { Link } from "react-router";
+
+import "./ByDress.scss";
 
 const testimonials = [
   {
