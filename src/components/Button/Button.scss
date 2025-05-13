@@ -1,44 +1,79 @@
 .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
-    border-radius: 62px;
-    font-size: 16px;
-    border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  border-radius: 62px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .btn-primary {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
+
+  &:hover {
+    background-color: #333;
+  }
 }
 
 .btn-secondary {
-    background-color: #F0F0F0;
-    color: black;
+  background-color: #f0f0f0;
+  color: black;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
 }
 
 .btn-white {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
 }
 
 .btn-large {
-    height: 56px;
+  height: 56px;
+  font-weight: 500;
 }
 
 .btn-medium {
-    height: 48px;
+  height: 48px;
+  font-weight: 500;
 }
 
 .btn-small {
-    height: 42px;
+  height: 42px;
+  font-weight: 500;
 }
 
 .button.btn-full {
-    width: 100%;
+  width: 100%;
 }
 
 .button.p-none {
-    padding: auto 12px;
+  padding: auto 12px;
+}
+
+@media (max-width: 768px) {
+  .button {
+    font-size: 14px;
+  }
+
+  .btn-large {
+    height: 48px;
+  }
+
+  .btn-medium {
+    height: 42px;
+  }
+
+  .btn-small {
+    height: 36px;
+  }
 }

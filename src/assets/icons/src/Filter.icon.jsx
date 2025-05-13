@@ -1,5 +1,3 @@
-import PropTypes from "prop-types"
-import * as React from "react"
 import { IconPropTypes } from "../propType"
 
 const FilterIcon = (props) => (

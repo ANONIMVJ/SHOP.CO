@@ -1,4 +1,3 @@
-import * as React from "react"
 import { IconPropTypes } from "../propType"
 
 const TickIcon = (props) => (

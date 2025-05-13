@@ -1,0 +1,30 @@
+.stars-container {
+  display: flex;
+  gap: 2px;
+
+  .star {
+    &.filled {
+      color: #ffc107;
+    }
+
+    &.half-filled {
+      color: #ffc107;
+    }
+
+    &.empty {
+      color: #e0e0e0;
+    }
+
+    &.size-sm {
+      font-size: 14px;
+    }
+
+    &.size-md {
+      font-size: 18px;
+    }
+
+    &.size-lg {
+      font-size: 22px;
+    }
+  }
+}

@@ -1,167 +1,197 @@
-import React, { useEffect, useState } from 'react'
-import ReactRangeSliderInput from 'react-range-slider-input'
+import React, { useEffect, useState } from "react";
+import ReactRangeSliderInput from "react-range-slider-input";
 
-import { ArrowRightIcon, FilterIcon } from '../../../../assets/icons'
+import { ArrowRightIcon, FilterIcon } from "../../../../assets/icons";
 
-import 'react-range-slider-input/dist/style.css'
-import './FilterSide.scss'
-import ColorPicker from './ColorPicker'
-import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router'
-import { useProducts } from '../../../../hooks/useProducts'
-import { parseQueryParams } from '../../../../utils'
+import "react-range-slider-input/dist/style.css";
+import "./FilterSide.scss";
+import ColorPicker from "./ColorPicker";
+import { useLocation, useNavigate } from "react-router";
+import { parseQueryParams } from "../../../../utils";
 
 const FilterSidebar = () => {
-    const navigate = useNavigate();
-    const { categoryId } = useParams();
-    const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    const objParams = parseQueryParams(location.search);
+  const objParams = parseQueryParams(location.search);
 
-    const {data, isLoading} = useProducts({
-        category: objParams?.category
+  const [togglers, setTogglers] = useState({
+    priceToggler: false,
+    colorToggler: false,
+    sizeToggler: true,
+  });
+
+  const [selectedSize, setSelectedSize] = useState(objParams.size || null);
+  const clientMinPrice = objParams.minPrice ? Number(objParams.minPrice) : 0;
+  const clientMaxPrice = objParams.maxPrice ? Number(objParams.maxPrice) : 500;
+  const [priceRange, setPriceRange] = useState([
+    clientMinPrice,
+    clientMaxPrice,
+  ]);
+
+  const handleToggle = (key) => {
+    setTogglers({
+      ...togglers,
+      [key]: !togglers[key],
     });
+  };
 
-    console.log(data, isLoading);
+  useEffect(() => {
+    const el = document.querySelectorAll(".range-slider__thumb");
 
-    const [selectedSize, setSelectedSize] = useState(null);
+    if (!!el[0] && !!el[1]) {
+      el[0].innerHTML = `<span style="font-weight: 700;position:absolute;bottom: -20px;background-color: transparent !important;">$${priceRange[0]}</span>`;
+      el[1].innerHTML = `<span style="font-weight: 700;position:absolute;bottom: -20px;background-color: transparent !important;">$${priceRange[1]}</span>`;
+    }
+  }, [priceRange]);
 
-    const sizeOptions = [
-        "XX-Small", "X-Small", "Small", "Medium",
-        "Large", "X-Large", "XX-Large", "3X-Large", "4X-Large"
-    ];
-    
+  const filterByCloths = [
+    { filterKey: "T-shirt", title: "T-shirts" },
+    { filterKey: "Men's-shoes", title: "Shoes" },
+    { filterKey: "Socks", title: "Socks" },
+    { filterKey: "Women's-shoes", title: "Women's Shoes" },
+    { filterKey: "Pants", title: "Jeans" },
+  ];
 
-    const dressStyles = [
-        { key: 'casual', label: 'Casual' },
-        { key: 'formal', label: 'Formal' },
-        { key: 'party', label: 'Party' },
-        { key: 'gym', label: 'Gym' },
-    ];
+  const sizeOptions = ["XS", "S", "M", "L", "XL", "XXL"];
 
+  const handleCategoryClick = (categoryObj) => {
+    navigate(`/category/${categoryObj.filterKey}`);
+  };
 
-    const [togglers, setTogglers] = useState({
-        priceToggler: false,
-        colorToggler: false,
-        sizeToggler: false,
-        dressStyleToggler: false,
-    });
+  const handleSizeSelection = (size) => {
+    setSelectedSize(size === selectedSize ? null : size);
+  };
 
-    const handleToggle = (key) => {
-        setTogglers({
-            ...togglers,
-            [key]: !togglers[key]
-        })
+  const handleApplyFilter = () => {
+    const queryParams = new URLSearchParams();
+
+    for (const [key, value] of Object.entries(objParams)) {
+      if (!["size", "minPrice", "maxPrice"].includes(key)) {
+        queryParams.set(key, value);
+      }
     }
 
-    const [priceRange, setPriceRange] = useState([0, 500]);
-
-    useEffect(() => {
-        const el = document.querySelectorAll('.range-slider__thumb');
-
-        if (!!el[0] && !!el[1]) {
-            el[0].innerHTML = `<span style="font-weight: 700;position:absolute;bottom: -20px;background-color: transparent !important;">$${priceRange[0]}</span>`;
-            el[1].innerHTML = `<span style="font-weight: 700;position:absolute;bottom: -20px;background-color: transparent !important;">$${priceRange[1]}</span>`;
-        }
-    }, [priceRange]);
-
-    const filterByCloths = [
-        { filterKey: "T-shirt", title: "T-shirts" },
-        { filterKey: "Men's-shoes", title: "Shoes" },
-        { filterKey: "Socks", title: "Socks" },
-        { filterKey: "Hoodie", title: "Hoodie" },
-        { filterKey: "Pants", title: "Jeans" },
-    ]
-
-    const handleCategoryClick = (categoryObj) => {
-        navigate(`/category/${categoryId}?category=${categoryObj.filterKey}`);
+    if (selectedSize) {
+      queryParams.set("size", selectedSize);
     }
 
-    return (
-        <div className='filter-side-wrapper'>
-            <div className='filter-header'>
-                <h3>Filters</h3>
-                <FilterIcon />
-            </div>
-            <div className='hr-line' />
-            <div className='info'>
-                {filterByCloths.map(item => (
-                    <div onClick={() => handleCategoryClick(item)} className='filter-item'>
-                        <span>{item.title}</span>
-                        <ArrowRightIcon />
-                    </div>
-                ))}
-            </div>
-            <div className='hr-line' />
-            <div className='accordion'>
-                <div className='accordion-header' onClick={() => handleToggle('priceToggler')}>
-                    <p>Price</p>
-                    <div className={`arrow ${togglers.priceToggler ? 'arrow-top' : 'arrow-bottom'}`}>
-                        <ArrowRightIcon />
-                    </div>
-                </div>
-                <div className={`accordion-body ${togglers.priceToggler ? 'open' : 'hide'}`}>
-                    <ReactRangeSliderInput
-                        className='hola'
-                        min={5}
-                        max={500}
-                        onInput={(range) => setPriceRange(range)}
-                    />
-                </div>
-            </div>
-            <div className='hr-line' />
-            <div className='accordion'>
-                <div className='accordion-header' onClick={() => handleToggle('colorToggler')}>
-                    <p>Colors</p>
-                    <div className={`arrow ${togglers.colorToggler ? 'arrow-top' : 'arrow-bottom'}`}>
-                        <ArrowRightIcon />
-                    </div>
-                </div>
-                <div className={`accordion-body color-accordion ${togglers.colorToggler ? 'open' : 'hide'}`}>
-                    <ColorPicker handleResult={(res) => console.log("result", res)} />
-                </div>
-            </div>
-            <div className='hr-line' />
-            <div className='accordion'>
-                <div className='accordion-header' onClick={() => handleToggle('sizeToggler')}>
-                    <p>Size</p>
-                    <div className={`arrow ${togglers.sizeToggler ? 'arrow-top' : 'arrow-bottom'}`}>
-                        <ArrowRightIcon />
-                    </div>
-                </div>
-                <div className={`accordion-body bottom size-accordion ${togglers.sizeToggler ? 'open' : 'hide'}`}>
-                    <div className="size-options">
-                        {sizeOptions.map(size => (
-                            <button
-                                key={size}
-                                onClick={() => setSelectedSize(size)}
-                                className={`size-btn ${selectedSize === size ? 'active' : ''}`}
-                            >
-                                {size}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            </div>
-            <div className='hr-line' />
-            <div className='accordion'>
-                <div className='accordion-header' onClick={() => handleToggle('dressStyleToggler')}>
-                    <p>Dress Style</p>
-                    <div className={`arrow ${togglers.dressStyleToggler ? 'arrow-top' : 'arrow-bottom'}`}>
-                        <ArrowRightIcon />
-                    </div>
-                </div>
-                <div className={`accordion-body bottom ${togglers.dressStyleToggler ? 'open' : 'hide'}`}>
-                    {dressStyles.map(style => (
-                        <div key={style.key} className='filter-item dress-info'>
-                            <span>{style.label}</span>
-                            <ArrowRightIcon />
-                        </div>
-                    ))}
-                <button className='apply-filter-btn'>Apply Filter</button>
-                </div>
-            </div>
+    if (priceRange[0] > 0) {
+      queryParams.set("minPrice", priceRange[0]);
+    }
+    if (priceRange[1] < 500) {
+      queryParams.set("maxPrice", priceRange[1]);
+    }
+
+    const queryString = queryParams.toString();
+    navigate({
+      pathname: location.pathname,
+      search: queryString ? `?${queryString}` : "",
+    });
+  };
+
+  return (
+    <div className="filter-side-wrapper">
+      <div className="filter-header">
+        <h3>Filters</h3>
+        <FilterIcon />
+      </div>
+      <div className="hr-line" />
+      <div>
+        {filterByCloths.map((item) => (
+          <div
+            key={item.filterKey}
+            onClick={() => handleCategoryClick(item)}
+            className="filter-item"
+          >
+            <span>{item.title}</span>
+            <ArrowRightIcon />
+          </div>
+        ))}
+      </div>
+      <div className="hr-line" />
+      <div className="accordion">
+        <div
+          className="accordion-header"
+          onClick={() => handleToggle("priceToggler")}
+        >
+          <p>Price</p>
+          <div
+            className={`arrow ${
+              togglers.priceToggler ? "arrow-top" : "arrow-bottom"
+            }`}
+          >
+            <ArrowRightIcon />
+          </div>
         </div>
-    )
-}
+        <div
+          className={`accordion-body ${
+            togglers.priceToggler ? "open" : "hide"
+          }`}
+        >
+          <ReactRangeSliderInput
+            className="hola"
+            min={5}
+            max={500}
+            value={priceRange}
+            onInput={(range) => setPriceRange(range)}
+          />
+        </div>
+      </div>
+      <div className="hr-line" />
+      <div className="accordion">
+        <div
+          className="accordion-header"
+          onClick={() => handleToggle("colorToggler")}
+        >
+          <p>Colors</p>
+          <div
+            className={`arrow ${
+              togglers.colorToggler ? "arrow-top" : "arrow-bottom"
+            }`}
+          >
+            <ArrowRightIcon />
+          </div>
+        </div>
+        <div
+          className={`accordion-body color-accordion ${
+            togglers.colorToggler ? "open" : "hide"
+          }`}
+        >
+          <ColorPicker handleResult={(res) => console.log("result", res)} />
+        </div>
+      </div>
+      <div className="hr-line" />
+      <div className="accordion">
+        <div
+          className="accordion-header"
+          onClick={() => handleToggle("sizeToggler")}
+        >
+          <p>Size</p>
+          <div className={`arrow ${ togglers.sizeToggler ? "arrow-top" : "arrow-bottom" }`}>
+            <ArrowRightIcon />
+          </div>
+        </div>
+        <div className={`accordion-body ${togglers.sizeToggler ? "open" : "hide"}`}>
+          <div className="size-options">
+            {sizeOptions.map((size) => (
+              <div
+                key={size}
+                className={`size-option ${
+                  selectedSize === size ? "selected" : ""
+                }`}
+                onClick={() => handleSizeSelection(size)}>
+                {size}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="apply-filter-btn">
+        <button onClick={handleApplyFilter}>Apply Filter</button>
+      </div>
+    </div>
+  );
+};
 
-export default FilterSidebar
+export default FilterSidebar;

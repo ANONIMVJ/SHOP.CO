@@ -1,70 +1,61 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import "./TopSelling.scss";
-import { BiSolidStar } from 'react-icons/bi';
+import { useProducts } from "../../../../hooks/useProducts";
+import { ProductCard } from "../../../../components";
+import { Link } from "react-router";
 
 function TopSelling() {
+  const [products, setProducts] = useState([]);
+
+  const { data, isLoading } = useProducts({ category: "T-shirt" });
+
+  useEffect(() => {
+    if (data) {
+      const formattedProducts = data.slice(0, 4).map((product) => ({
+        id: product.id,
+        title: product.title,
+        image: product.images[0],
+        rating: 5.0,
+        totalRatings: "50+",
+        price: product.price,
+        originalPrice: product.price + 10,
+        discount: 20,
+      }));
+      setProducts(formattedProducts);
+    }
+  }, [data]);
+
+  if (isLoading) {
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
   return (
-    <div className='container'>
-        <div className='top-selling-h2'>
-          <h2>Top Selling</h2>
-        </div>
-        <div className='item-cards'>
-            <div className='card'>
-              <img style={{width: "295px"}} src="/img/ts1_item.png" alt="The item one png" />
-              <p>VERTICAL STRIPED SHIRT</p>
-              <div className='stars'>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <p className='raiting'>5.0/5</p>
-              </div>
-              <p className='price'>$212 <span>$232</span> <span className='disc'>-20%</span></p>
-            </div>
-            <div className='card'>
-              <img style={{width: "295px"}} src="/img/ts2_item.png" alt="The item two png" />
-              <p>COURAGE GRAPHIC T-SHIRT</p>
-              <div className='stars'>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <p className='raiting'>4.0/5</p>
-              </div>
-              <p className='price'>$145</p>
-            </div>
-            <div className='card'>
-              <img style={{width: "295px"}} src="/img/ts3_item.png" alt="The item two png" />
-              <p>LOOSE FIT BERMUDA SHORTS</p>
-              <div className='stars'>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <p className='raiting'>3.0/5</p>
-              </div>
-              <p className='price'>$80</p>
-            </div>
-            <div className='card'>
-              <img style={{width: "295px"}} src="/img/ts4_item.png" alt="The item two png" />
-              <p>FADED SKINNY JEANS</p>
-              <div className='stars'>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <BiSolidStar className='star-icon'/>
-                <p className='raiting'>4.5/5</p>
-              </div>
-              <p className='price'>$210</p>
-            </div> <br />
-            <button>View All</button>
-        </div>
+    <div className="container">
+      <div className="top-selling-h2">
+        <h2>Top Selling</h2>
+      </div>
+      <div className="item-cards">
+        {products.map((product) => (
+          <Link
+            to={`/products/${product.id}`}
+            key={product.id}
+            className="product-link"
+          >
+            <ProductCard product={product} image={product.image} />
+          </Link>
+        ))}
+        <button>
+          <Link style={{ textDecoration: "none", color: "white" }} to="/allproducts">
+            View All
+          </Link>
+        </button>
+      </div>
     </div>
-  )
+  );
 }
 
 export default TopSelling;

@@ -66,11 +66,11 @@ function Footer() {
           <div className='footer-finish'>
             <p>Shop.co © 2000-2023, All Rights Reserved</p>
             <div className='payment-cards'>
-              <img src="/img/visa.png" alt="the visa" />
-              <img src="/img/mastercard.png" alt="the mastercard" />
-              <img src="/img/paypal.png" alt="the paypal" />
-              <img src="/img/pay.png" alt="the pay" />
-              <img src="/img/googlePay.png" alt="the googlePay" />
+              <img src="src/assets/visa.png" alt="the visa" />
+              <img src="src/assets/mastercard.png" alt="the mastercard" />
+              <img src="src/assets/paypal.png" alt="the paypal" />
+              <img src="src/assets/pay.png" alt="the pay" />
+              <img src="src/assets/googlePay.png" alt="the googlePay" />
             </div>
           </div>
         </div>

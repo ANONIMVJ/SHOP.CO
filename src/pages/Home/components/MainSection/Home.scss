@@ -1,83 +1,196 @@
 .hero {
-    h2 {
-        display: flex;
-        flex-direction: column;
-        font-family: 'Poppins';
-        font-size: 64px;
-        font-weight: 700;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .hero-content {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-top: 30px;
+  }
+
+  .hero-text-section {
+    max-width: 50%;
+  }
+
+  h2 {
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins";
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-top: 50px;
+    max-width: 500px;
+    letter-spacing: -1px;
+  }
+
+  .bigStarIcon {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 104px;
+    height: 104px;
+  }
+
+  .home-p-img {
+    display: flex;
+    align-items:center;
+    margin-top: 20px;
+    position: relative;
+
+    p {
+      font-size: 14px;
+      color: #00000099;
+      max-width: 460px;
+      line-height: 1.6;
     }
-    
-    .bigStarIcon {
-        position: absolute;
-        top: 50px;
-        left: 98%;
-        width: 104px;
-        height: 104px;
-        transform: translateX(-50%);
+
+    img {
+      position: absolute;
+      width: 56px;
+      height: 56px;
+      left: 500px;
+      bottom: 0;
+    }
+  }
+
+  .shop-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    width: 130px;
+    height: 48px;
+    margin-top: 20px;
+    border-radius: 60px;
+    border: none;
+    gap: 12px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+  }
+
+  .nomeric-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 48px;
+    gap: 40px;
+
+    .nomeric {
+      h3 {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      p {
+        font-size: 14px;
+        color: #00000099;
+        font-weight: 400;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    padding: 20px;
+
+    .hero-content {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-text-section {
+      max-width: 100%;
+    }
+
+    h2 {
+      font-size: 28px;
+      gap: 0px;
+      padding: 0px;
+      text-align: center;
+      max-width: 100%;
+      margin: 20px auto;
     }
 
     .home-p-img {
-        display: flex;
-        align-items: center;
-        margin-top: -60px;
-    
-        p {
-            font-size: 14px;
-            color: #00000099;
+      flex-direction: column;
+      margin-top: 10px;
+
+      p {
+        font-size: 12px;
+        margin-bottom: 15px;
+        max-width: 100%;
+        br {
+          display: none;
         }
-        
-        img {
-            display: flex;
-            width: 56px;
-            height: 56px;
-            margin-left: 105px;
-        }
+      }
+
+      img {
+        position: static;
+        margin-left: 0;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .bigStarIcon {
+      width: 32px;
+      height: 32px;
+      right: 10%;
+      top: 40px;
     }
 
     .shop-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        width: 180px;
-        height: 50px;
-        margin-top: 20px;
-        border-radius: 60px;
-        border: none;
-        gap: 12px;
-        color: aliceblue;
-        background-color: black;
+      margin: 15px auto;
     }
 
     .nomeric-wrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-top: 48px;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-top: 25px;
+      gap: 10px;
 
-        .nomeric {
-            width: 200px;
+      .nomeric {
+        width: auto;
+        padding: 0 5px;
 
-            h3 {
-                font-size: 40px;
-                font-weight: 500px;
-            }
-
-            p {
-                font-size: 16px;
-                margin-top: -35px;
-                color: #00000099;
-            }
+        h3 {
+          font-size: 20px;
+          margin-bottom: 5px;
         }
+
+        p {
+          font-size: 12px;
+          margin-top: 0;
+        }
+      }
     }
+  }
 }
 
-@media(max-width: 768px) {
-    .hero {
-        h2 {
-            font-size: 32px;
-            gap: 0px;
-            padding: 0px;
-        }
+@media (max-width: 480px) {
+  .hero {
+    h2 {
+      font-size: 24px;
     }
+
+    .nomeric-wrapper {
+      .nomeric {
+        h3 {
+          font-size: 18px;
+        }
+
+        p {
+          font-size: 10px;
+        }
+      }
+    }
+  }
 }

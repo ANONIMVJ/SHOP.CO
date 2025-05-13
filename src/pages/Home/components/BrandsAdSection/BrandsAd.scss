@@ -1,31 +1,54 @@
 .brands {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 70px;
+
+  p {
     align-items: center;
-    gap: 70px;
+    font-size: 50px;
+  }
+
+  .versace {
+    font-family: "Times New Roman", sans-serif;
+  }
+
+  .zara {
+    font-family: "Bodoni";
+  }
+
+  .gucci {
+    font-family: "Rosarivo";
+  }
+
+  .parada {
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  }
+
+  .calvin {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+}
+
+@media (max-width: 768px) {
+  .brands {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
 
     p {
-        align-items: center;
-        font-size: 50px;
+      font-size: 26px;
     }
+  }
+}
 
-    .versace {
-        font-family: 'Times New Roman', sans-serif;
-    }
+@media (max-width: 480px) {
+  .brands {
+    gap: 15px;
 
-    .zara {
-        font-family: 'Bodoni';
+    p {
+      font-size: 20px;
     }
-
-    .gucci {
-        font-family: 'Rosarivo';
-    }
-
-    .parada {
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    }
-
-    .calvin {
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
+  }
 }

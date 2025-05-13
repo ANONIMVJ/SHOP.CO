@@ -5,6 +5,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Freckle+Face&family=Indie+Flower&family=Playwrite+HU:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rosarivo:ital@0;1&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 
 
+* {
+  text-decoration: none;
+}
 
 body {
     margin: 0;
@@ -49,19 +52,65 @@ body {
     }
 }
 
-@media(max-width: 768px) {
-    .hero {
-        width: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center 50%;
+@media (max-width: 768px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .hero {
+    height: auto;
+    min-height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 50%;
+    padding-bottom: 150px;
+
+    .brands-ad {
+      position: relative;
+      top: 100px;
+      width: 100%;
+      height: auto;
+      padding: 15px 5px;
+
+      img {
+        max-width: 60px;
+        height: auto;
+      }
     }
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .hero {
+    min-height: 400px;
+
+    .brands-ad {
+      top: 80px;
+
+      img {
+        max-width: 40px;
+      }
+    }
+  }
 }
 
 .hero-footer {
-    position: relative;
-    width: 100%;
-    height: 699px;
-    margin-top: 170px;
-    background-color: #F0F0F0;
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 699px;
+  margin-top: 170px;
+  background-color: #f0f0f0;
+  padding-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .hero-footer {
+    margin-top: 100px;
+    min-height: auto;
+  }
 }

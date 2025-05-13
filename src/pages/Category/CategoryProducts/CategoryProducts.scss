@@ -1,0 +1,53 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  width: 100%;
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    border-top: 5px solid black;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+.CategoryProducts {
+  width: 100%;
+  padding: 20px 0;
+
+  .item-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // Asosiy grid bu yerda
+    gap: 30px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .product-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  .no-products {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #999;
+    padding: 40px 0;
+  }
+}

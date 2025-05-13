@@ -1,11 +1,116 @@
-.top-selling-h2{
-    h2 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Poppins';
-        font-weight: 1000;
-        font-size: 48px;
-        margin-top: 64px;
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  width: 100%;
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    border-top: 5px solid black;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.top-selling-h2 {
+  margin-top: 75px;
+  margin-bottom: 40px;
+  text-align: center;
+
+  h2 {
+    font-size: 36px;
+    font-weight: 600;
+  }
+}
+
+.item-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+
+  .product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+
+    &:hover {
+      .product-card {
+        transform: translateY(-5px);
+      }
     }
+  }
+
+  button {
+    margin-top: 45px;
+    padding: 15px 48px;
+    border-radius: 62px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    grid-column: 1/-1;
+    width: fit-content;
+    justify-self: center;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #333;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .top-selling-h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 24px;
+    }
+  }
+
+  .item-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+    button {
+      margin-top: 30px;
+      padding: 12px 30px;
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .top-selling-h2 {
+    h2 {
+      font-size: 20px;
+    }
+  }
+
+  .item-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }

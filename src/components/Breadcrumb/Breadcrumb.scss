@@ -1,0 +1,29 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #757575;
+  padding: 10px 0;
+
+  a {
+    color: #757575;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+  }
+
+  .separator {
+    margin: 0 8px;
+    color: #ccc;
+  }
+
+  .current {
+    color: #000;
+    font-weight: 500;
+  }
+}
